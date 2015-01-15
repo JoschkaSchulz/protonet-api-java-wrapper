@@ -25,7 +25,7 @@ Just create a .jar file or link the project within eclipse.
 
 After that you have to create a new Protonet Object:
 
-ProtonetWrapper protonet = new ProtonetWrapper("http://yourbox.protonet.info");
-protonet.getToken("email", "password", "name of your application");
+    ProtonetWrapper protonet = new ProtonetWrapper("http://yourbox.protonet.info");
+    protonet.getToken("email", "password", "name of your application");
 
 With that Protonet-Object you are able to use the REST interface and to get a result as a JSON String. I also added some examples in the file APIExample.java and I hope it's straightforward to use to get results from the Protonet boxes.
