@@ -28,4 +28,4 @@ After that you have to create a new Protonet Object:
     ProtonetWrapper protonet = new ProtonetWrapper("http://yourbox.protonet.info");
     protonet.getToken("email", "password", "name of your application");
 
-With that Protonet-Object you are able to use the REST interface and to get a result as a JSON String. I also added some examples in the file APIExample.java and I hope it's straightforward to use to get results from the Protonet boxes.
+With that Protonet-Object you are able to use the REST interface and to get a result as a JSON String. I also added some examples in the file [APIExample.java](https://github.com/protonet/protonet-api-java-wrapper/blob/master/src/de/thathalas/protonet/APIExample.java) and I hope it's straightforward to use to get results from the Protonet boxes.
