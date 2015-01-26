@@ -1,9 +1,12 @@
-package de.thathalas.protonet;
+package de.thathalas.protonet.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.message.BasicNameValuePair;
+
+import de.thathalas.protonet.ProtonetWrapper;
+import de.thathalas.protonet.objects.UserDevice;
 
 public class Devices {
 
@@ -13,11 +16,11 @@ public class Devices {
 		this.protonet = protonet;
 	}
 	
-	public String create(String deviceId, String platform) {
+	public UserDevice create(String deviceId, String platform) {
 		List<BasicNameValuePair> data = new ArrayList<BasicNameValuePair>();
 		data.add(new BasicNameValuePair("device_id", deviceId));
 		data.add(new BasicNameValuePair("platform", platform));
-		return protonet.post("/api/v1/users/"+ protonet.getUserId() +"/devices", data);
+		return UserDevice.createUserDevice(protonet.post("/api/v1/users/"+ protonet.getUserId() +"/devices", data));
 	}
 	
 	public boolean destroy(int userId, int deviceId) {

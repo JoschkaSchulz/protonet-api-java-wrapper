@@ -1,10 +1,17 @@
-package de.thathalas.protonet;
+package de.thathalas.protonet.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.message.BasicNameValuePair;
 
+import de.thathalas.protonet.ProtonetWrapper;
+import de.thathalas.protonet.objects.Subscription;
+
+/**
+ * The Me class represents the Subscriptions REST interface of the Protonet API.
+ * @author Joschka Schulz
+ */
 public class Subscriptions {
 	private ProtonetWrapper protonet;
 	
@@ -12,16 +19,19 @@ public class Subscriptions {
 		this.protonet = protonet;
 	}
 	
-	public String showTopics(int topicId, int subscriptionId) {
-		return protonet.get("/api/v1/topics/" + topicId +"/subscriptions/" + subscriptionId);
+	public Subscription showTopics(int topicId, int subscriptionId) {
+		return Subscription.createSubscription(
+				protonet.get("/api/v1/topics/" + topicId +"/subscriptions/" + subscriptionId));
 	}
 	
-	public String showProjects(int projectId, int subscriptionId) {
-		return protonet.get("/api/v1/projects/" + projectId +"/subscriptions/" + subscriptionId);
+	public Subscription showProjects(int projectId, int subscriptionId) {
+		return Subscription.createSubscription(
+				protonet.get("/api/v1/projects/" + projectId +"/subscriptions/" + subscriptionId));
 	}
 	
-	public String showPrivateChats(int privateChatId, int subscriptionId) {
-		return protonet.get("/api/v1/private_chats/" + privateChatId +"/subscriptions/" + subscriptionId);
+	public Subscription showPrivateChats(int privateChatId, int subscriptionId) {
+		return Subscription.createSubscription(
+				protonet.get("/api/v1/private_chats/" + privateChatId +"/subscriptions/" + subscriptionId));
 	}
 	
 	public String updateTopics(int topicId, int subscriptionId) {

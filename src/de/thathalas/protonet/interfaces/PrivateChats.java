@@ -1,10 +1,16 @@
-package de.thathalas.protonet;
+package de.thathalas.protonet.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.message.BasicNameValuePair;
 
+import de.thathalas.protonet.ProtonetWrapper;
+
+/**
+ * The Me class represents the Private Chats REST interface of the Protonet API.
+ * @author Joschka Schulz
+ */
 public class PrivateChats {
 	private ProtonetWrapper protonet;
 	

@@ -20,6 +20,14 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import de.thathalas.protonet.interfaces.Devices;
+import de.thathalas.protonet.interfaces.Me;
+import de.thathalas.protonet.interfaces.Meeps;
+import de.thathalas.protonet.interfaces.PrivateChats;
+import de.thathalas.protonet.interfaces.Projects;
+import de.thathalas.protonet.interfaces.Systems;
+import de.thathalas.protonet.interfaces.Users;
+
 public class ProtonetWrapper {
 	private String serverUrl;
 	private HttpClient client;
@@ -33,6 +41,7 @@ public class ProtonetWrapper {
 	private Projects projectsWrapper;
 	private Meeps meepsWrapper;
 	private PrivateChats privateChatsWrapper;
+	private Systems systemsWrapper;
 	
 	public ProtonetWrapper(String serverUrl) {
 		this.serverUrl = serverUrl;
@@ -53,6 +62,7 @@ public class ProtonetWrapper {
 		projectsWrapper = new Projects(this);
 		meepsWrapper = new Meeps(this);
 		privateChatsWrapper = new PrivateChats(this);
+		systemsWrapper = new Systems(this);
 	}
 	
 	private String startResponse(HttpResponse response) {
@@ -101,6 +111,10 @@ public class ProtonetWrapper {
 	
 	public PrivateChats getPrivateChats() {
 		return privateChatsWrapper;
+	}
+	
+	public Systems getSystems() {
+		return systemsWrapper;
 	}
 	
 	public int getUserId() {
