@@ -4,11 +4,11 @@ import org.json.JSONObject;
 
 public class ProtonetMeep {
 	private int id;
-    private String message;
+	private String message;
     private int no;
     private String type;
     private ProtonetUser user;
-	private String files; //TODO: Has to be implemented next!
+    private String files; //TODO: Has to be implemented next!
 	
 	private ProtonetMeep(int id, String message, int no, String type, ProtonetUser user,
 			String files) {
