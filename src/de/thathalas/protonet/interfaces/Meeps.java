@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.thathalas.protonet.ProtonetWrapper;
-import de.thathalas.protonet.objects.Meep;
+import de.thathalas.protonet.objects.ProtonetMeep;
 
 /**
  * The Me class represents the Meeps REST interface of the Protonet API.
@@ -21,60 +21,60 @@ public class Meeps {
 		this.protonet = protonet;
 	}
 	
-	public List<Meep> indexTopics(int topicId) {
-		List<Meep> list = new ArrayList<Meep>();
+	public List<ProtonetMeep> indexTopics(int topicId) {
+		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/topics/" + topicId + "/meeps")).getJSONArray("meeps");
 		for(int i = 0; i < array.length(); i++) {
-			list.add(Meep.createMeep(array.getJSONObject(i)));
+			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
 		}
 		return list;
 	}
 	
-	public List<Meep> indexProjects(int projectId) {
-		List<Meep> list = new ArrayList<Meep>();
+	public List<ProtonetMeep> indexProjects(int projectId) {
+		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/projects/" + projectId + "/meeps")).getJSONArray("meeps");
 		for(int i = 0; i < array.length(); i++) {
-			list.add(Meep.createMeep(array.getJSONObject(i)));
+			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
 		}
 		return list;
 	}
 	
-	public List<Meep> indexPrivateChats(int privateChatsId) {
-		List<Meep> list = new ArrayList<Meep>();
+	public List<ProtonetMeep> indexPrivateChats(int privateChatsId) {
+		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/private_chats/" + privateChatsId + "/meeps")).getJSONArray("meeps");
 		for(int i = 0; i < array.length(); i++) {
-			list.add(Meep.createMeep(array.getJSONObject(i)));
+			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
 		}
 		return list;
 	}
 	
-	public Meep createTopics(int topicId, String message) {
+	public ProtonetMeep createTopics(int topicId, String message) {
 		List<BasicNameValuePair> data = new ArrayList<>();
 		data.add(new BasicNameValuePair("message", message));
-		return Meep.createMeep(protonet.post("/api/v1/topics/" + topicId + "/meeps", data));
+		return ProtonetMeep.createMeep(protonet.post("/api/v1/topics/" + topicId + "/meeps", data));
 	}
 	
-	public Meep createProjects(int projectId, String message) {
+	public ProtonetMeep createProjects(int projectId, String message) {
 		List<BasicNameValuePair> data = new ArrayList<>();
 		data.add(new BasicNameValuePair("message", message));
-		return Meep.createMeep(protonet.post("/api/v1/projects/" + projectId + "/meeps", data));
+		return ProtonetMeep.createMeep(protonet.post("/api/v1/projects/" + projectId + "/meeps", data));
 	}
 	
-	public Meep createPrivateChats(int privateChatId, String message) {
+	public ProtonetMeep createPrivateChats(int privateChatId, String message) {
 		List<BasicNameValuePair> data = new ArrayList<>();
 		data.add(new BasicNameValuePair("message", message));
-		return Meep.createMeep(protonet.post("/api/v1/private_chats/" + privateChatId + "/meeps", data));
+		return ProtonetMeep.createMeep(protonet.post("/api/v1/private_chats/" + privateChatId + "/meeps", data));
 	}
 	
-	public Meep showTopics(int projectId, int meepId) {
-		return Meep.createMeep(protonet.get("/api/v1/topics/" + projectId + "/meeps/" + meepId));
+	public ProtonetMeep showTopics(int projectId, int meepId) {
+		return ProtonetMeep.createMeep(protonet.get("/api/v1/topics/" + projectId + "/meeps/" + meepId));
 	}
 	
-	public Meep showProjects(int topicId, int meepId) {
-		return Meep.createMeep(protonet.get("/api/v1/projects/" + topicId + "/meeps/" + meepId));
+	public ProtonetMeep showProjects(int topicId, int meepId) {
+		return ProtonetMeep.createMeep(protonet.get("/api/v1/projects/" + topicId + "/meeps/" + meepId));
 	}
 	
-	public Meep showPrivateChats(int privateChatId, int meepId) {
-		return Meep.createMeep(protonet.get("/api/v1/private_chats/" + privateChatId + "/meeps/" + meepId));
+	public ProtonetMeep showPrivateChats(int privateChatId, int meepId) {
+		return ProtonetMeep.createMeep(protonet.get("/api/v1/private_chats/" + privateChatId + "/meeps/" + meepId));
 	}
 }

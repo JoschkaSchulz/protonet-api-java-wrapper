@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.http.message.BasicNameValuePair;
 
 import de.thathalas.protonet.ProtonetWrapper;
-import de.thathalas.protonet.objects.Subscription;
+import de.thathalas.protonet.objects.ProtonetSubscription;
 
 /**
  * The Me class represents the Subscriptions REST interface of the Protonet API.
@@ -19,18 +19,18 @@ public class Subscriptions {
 		this.protonet = protonet;
 	}
 	
-	public Subscription showTopics(int topicId, int subscriptionId) {
-		return Subscription.createSubscription(
+	public ProtonetSubscription showTopics(int topicId, int subscriptionId) {
+		return ProtonetSubscription.createSubscription(
 				protonet.get("/api/v1/topics/" + topicId +"/subscriptions/" + subscriptionId));
 	}
 	
-	public Subscription showProjects(int projectId, int subscriptionId) {
-		return Subscription.createSubscription(
+	public ProtonetSubscription showProjects(int projectId, int subscriptionId) {
+		return ProtonetSubscription.createSubscription(
 				protonet.get("/api/v1/projects/" + projectId +"/subscriptions/" + subscriptionId));
 	}
 	
-	public Subscription showPrivateChats(int privateChatId, int subscriptionId) {
-		return Subscription.createSubscription(
+	public ProtonetSubscription showPrivateChats(int privateChatId, int subscriptionId) {
+		return ProtonetSubscription.createSubscription(
 				protonet.get("/api/v1/private_chats/" + privateChatId +"/subscriptions/" + subscriptionId));
 	}
 	

@@ -1,6 +1,7 @@
 package de.thathalas.protonet.interfaces;
 
 import de.thathalas.protonet.ProtonetWrapper;
+import de.thathalas.protonet.objects.ProtonetSystem;
 
 /**
  * The Me class represents the System REST interface of the Protonet API.
@@ -13,7 +14,7 @@ public class Systems {
 		this.protonet = protonet;
 	}
 	
-	public String index() {
-		return protonet.get("/api/v1/system");
+	public ProtonetSystem index() {
+		return ProtonetSystem.createSystem(protonet.get("/api/v1/system"));
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.json.JSONObject;
 
-public class User {
+public class ProtonetUser {
 	private int id;
 	private String firstName;
 	private String lastName;
@@ -16,7 +16,7 @@ public class User {
 	private boolean online;
 	private Date lastActiveAt;
 	
-	private User(int id, String firstName, String lastName, String email,
+	private ProtonetUser(int id, String firstName, String lastName, String email,
 			String avatar, String role, String username, boolean deactivated,
 			boolean online, String lastActiveAt) {
 		super();
@@ -37,7 +37,7 @@ public class User {
 	 * @param json the json object the user should be created from.
 	 * @return a user instance
 	 */
-	public static User createUser(JSONObject json) {
+	public static ProtonetUser createUser(JSONObject json) {
 		String username;
 		if (json.has("username")) {
 			username = json.getString("username");
@@ -45,7 +45,7 @@ public class User {
 			username = json.getString("first_name").toLowerCase() + "." + json.getString("last_name").toLowerCase();
 		}
 		
-		User user = new User(
+		ProtonetUser user = new ProtonetUser(
 				json.getInt("id"), 
 				json.getString("first_name"), 
 				json.getString("last_name"), 
@@ -65,7 +65,7 @@ public class User {
 	 * @param jsonObject the json string the user should be created from.
 	 * @return A user instance
 	 */
-	public static User createUser(String jsonObject) {
+	public static ProtonetUser createUser(String jsonObject) {
 		JSONObject json = new JSONObject(jsonObject);
 		if (json.has("user")) {
 			json = json.getJSONObject("user");
@@ -131,7 +131,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		ProtonetUser other = (ProtonetUser) obj;
 		if (id != other.id)
 			return false;
 		if (username == null) {

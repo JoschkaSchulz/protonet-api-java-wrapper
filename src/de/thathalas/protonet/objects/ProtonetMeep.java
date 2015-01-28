@@ -2,15 +2,15 @@ package de.thathalas.protonet.objects;
 
 import org.json.JSONObject;
 
-public class Meep {
+public class ProtonetMeep {
 	private int id;
     private String message;
     private int no;
     private String type;
-    private User user;
+    private ProtonetUser user;
 	private String files; //TODO: Has to be implemented next!
 	
-	private Meep(int id, String message, int no, String type, User user,
+	private ProtonetMeep(int id, String message, int no, String type, ProtonetUser user,
 			String files) {
 		super();
 		this.id = id;
@@ -21,7 +21,7 @@ public class Meep {
 		this.files = files;
 	}
 
-	private Meep(int id, String message, int no, String type, User user) {
+	private ProtonetMeep(int id, String message, int no, String type, ProtonetUser user) {
 		super();
 		this.id = id;
 		this.message = message;
@@ -30,7 +30,7 @@ public class Meep {
 		this.user = user;
 	}
 	
-	public static Meep createMeep(String jsonObject) {
+	public static ProtonetMeep createMeep(String jsonObject) {
 		JSONObject json = new JSONObject(jsonObject);
 		if (json.has("meep")) {
 			json = json.getJSONObject("meep");
@@ -38,13 +38,13 @@ public class Meep {
 		return createMeep(json);
 	}
 	
-	public static Meep createMeep(JSONObject json) {
-		Meep meep = new Meep(
+	public static ProtonetMeep createMeep(JSONObject json) {
+		ProtonetMeep meep = new ProtonetMeep(
 				json.getInt("id"), 
 				json.getString("message"), 
 				json.getInt("no"), 
 				json.getString("type"), 
-				User.createUser(json.getJSONObject("user")));
+				ProtonetUser.createUser(json.getJSONObject("user")));
 		return meep;
 	}
 
@@ -64,7 +64,7 @@ public class Meep {
 		return type;
 	}
 
-	public User getUser() {
+	public ProtonetUser getUser() {
 		return user;
 	}
 
@@ -88,7 +88,7 @@ public class Meep {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Meep other = (Meep) obj;
+		ProtonetMeep other = (ProtonetMeep) obj;
 		if (id != other.id)
 			return false;
 		return true;

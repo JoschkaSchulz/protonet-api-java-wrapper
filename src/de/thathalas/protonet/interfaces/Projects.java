@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.thathalas.protonet.ProtonetWrapper;
-import de.thathalas.protonet.objects.Project;
+import de.thathalas.protonet.objects.ProtonetProject;
 
 /**
  * The Me class represents the Projects REST interface of the Protonet API.
@@ -21,22 +21,22 @@ public class Projects {
 		this.protonet = protonet;
 	}
 	
-	public List<Project> index() {
-		List<Project> list = new ArrayList<Project>();
+	public List<ProtonetProject> index() {
+		List<ProtonetProject> list = new ArrayList<ProtonetProject>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/projects")).getJSONArray("projects");
 		for(int i = 0; i < array.length(); i++) {
-			list.add(Project.createProject(array.getJSONObject(i)));
+			list.add(ProtonetProject.createProject(array.getJSONObject(i)));
 		}
 		return list;
 	}
 	
-	public Project create(String name) {
+	public ProtonetProject create(String name) {
 		List<BasicNameValuePair> data = new ArrayList<>();
 		data.add(new BasicNameValuePair("name", name));
-		return Project.createProject(protonet.post("/api/v1/projects", data));
+		return ProtonetProject.createProject(protonet.post("/api/v1/projects", data));
 	}
 	
-	public Project show(int projectId) {
-		return Project.createProject(protonet.get("/api/v1/projects/" + projectId));
+	public ProtonetProject show(int projectId) {
+		return ProtonetProject.createProject(protonet.get("/api/v1/projects/" + projectId));
 	}
 }

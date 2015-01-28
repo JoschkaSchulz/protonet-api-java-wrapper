@@ -25,6 +25,7 @@ import de.thathalas.protonet.interfaces.Me;
 import de.thathalas.protonet.interfaces.Meeps;
 import de.thathalas.protonet.interfaces.PrivateChats;
 import de.thathalas.protonet.interfaces.Projects;
+import de.thathalas.protonet.interfaces.Subscriptions;
 import de.thathalas.protonet.interfaces.Systems;
 import de.thathalas.protonet.interfaces.Users;
 
@@ -41,6 +42,7 @@ public class ProtonetWrapper {
 	private Projects projectsWrapper;
 	private Meeps meepsWrapper;
 	private PrivateChats privateChatsWrapper;
+	private Subscriptions subscriptionsWrapper;
 	private Systems systemsWrapper;
 	
 	public ProtonetWrapper(String serverUrl) {
@@ -63,6 +65,7 @@ public class ProtonetWrapper {
 		meepsWrapper = new Meeps(this);
 		privateChatsWrapper = new PrivateChats(this);
 		systemsWrapper = new Systems(this);
+		subscriptionsWrapper = new Subscriptions(this);
 	}
 	
 	private String startResponse(HttpResponse response) {
@@ -111,6 +114,10 @@ public class ProtonetWrapper {
 	
 	public PrivateChats getPrivateChats() {
 		return privateChatsWrapper;
+	}
+	
+	public Subscriptions getSubscriptions() {
+		return subscriptionsWrapper;
 	}
 	
 	public Systems getSystems() {

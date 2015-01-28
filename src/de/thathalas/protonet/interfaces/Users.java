@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.thathalas.protonet.ProtonetWrapper;
-import de.thathalas.protonet.objects.User;
+import de.thathalas.protonet.objects.ProtonetUser;
 
 /**
  * The Me class represents the Users REST interface of the Protonet API.
@@ -20,18 +20,18 @@ public class Users {
 		this.protonet = protonet;
 	}
 	
-	public List<User> index() {
-		List<User> list = new ArrayList<User>();
+	public List<ProtonetUser> index() {
+		List<ProtonetUser> list = new ArrayList<ProtonetUser>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/users")).getJSONArray("users");
 		for(int i = 0; i < array.length(); i++) {
-			list.add(User.createUser(array.getJSONObject(i)));
+			list.add(ProtonetUser.createUser(array.getJSONObject(i)));
 		}
 		return list;
 	}
 	
-	public User show(int userId) {
+	public ProtonetUser show(int userId) {
 		String json = protonet.get("/api/v1/users/" + userId);
-		User user = User.createUser(json);
+		ProtonetUser user = ProtonetUser.createUser(json);
 		return user;
 	}
 }

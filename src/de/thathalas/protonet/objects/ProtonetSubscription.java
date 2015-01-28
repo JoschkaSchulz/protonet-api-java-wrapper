@@ -2,26 +2,26 @@ package de.thathalas.protonet.objects;
 
 import org.json.JSONObject;
 
-public class Subscription {
+public class ProtonetSubscription {
 	private int id;
 	private int lastSeenMeepNo;
 	
-	private Subscription(int id, int lastSeenMeepNo) {
+	private ProtonetSubscription(int id, int lastSeenMeepNo) {
 		super();
 		this.id = id;
 		this.lastSeenMeepNo = lastSeenMeepNo;
 	}
 	
-	public static Subscription createSubscription(String jsonObject) {
+	public static ProtonetSubscription createSubscription(String jsonObject) {
 		JSONObject json = new JSONObject(jsonObject);
-		if (json.has("project")) {
-			json = json.getJSONObject("project");
+		if (json.has("subscription")) {
+			json = json.getJSONObject("subscription");
 		}
 		return createSubscription(json);
 	}
 	
-	public static Subscription createSubscription(JSONObject json) {
-		return new Subscription(
+	public static ProtonetSubscription createSubscription(JSONObject json) {
+		return new ProtonetSubscription(
 				json.getInt("id"), 
 				json.getInt("last_seen_meep_no"));
 	}
@@ -50,7 +50,7 @@ public class Subscription {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Subscription other = (Subscription) obj;
+		ProtonetSubscription other = (ProtonetSubscription) obj;
 		if (id != other.id)
 			return false;
 		return true;

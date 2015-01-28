@@ -2,18 +2,18 @@ package de.thathalas.protonet.objects;
 
 import org.json.JSONObject;
 
-public class Project {
+public class ProtonetProject {
 	private int id;
 	private String name;
 	private String lastMeepDate; //TODO: in future convert to real date!
 	private int currentMeepNo;
-	private User lastMeepUser;
-	private Meep lastMeep;
-	private Subscription subscription;
+	private ProtonetUser lastMeepUser;
+	private ProtonetMeep lastMeep;
+	private ProtonetSubscription subscription;
 
-	private Project(int id, String name, String lastMeepDate,
-			int currentMeepNo, User lastMeepUser, Meep lastMeep,
-			Subscription subscription) {
+	private ProtonetProject(int id, String name, String lastMeepDate,
+			int currentMeepNo, ProtonetUser lastMeepUser, ProtonetMeep lastMeep,
+			ProtonetSubscription subscription) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -24,7 +24,7 @@ public class Project {
 		this.subscription = subscription;
 	}
 
-	public static Project createProject(String jsonObject) {
+	public static ProtonetProject createProject(String jsonObject) {
 		JSONObject json = new JSONObject(jsonObject);
 		if (json.has("project")) {
 			json = json.getJSONObject("project");
@@ -32,30 +32,30 @@ public class Project {
 		return createProject(json);
 	}
 
-	public static Project createProject(JSONObject json) {
+	public static ProtonetProject createProject(JSONObject json) {
 		String lastMeepDate = "";
 		if(!json.isNull("last_meep_date")) {
 			lastMeepDate = json.getString("last_meep_date");
 		}
 		
-		User lastMeepUser = null;
+		ProtonetUser lastMeepUser = null;
 		if(!json.isNull("last_meep_user")) {
-			lastMeepUser = User.createUser(json.getJSONObject("last_meep_user"));
+			lastMeepUser = ProtonetUser.createUser(json.getJSONObject("last_meep_user"));
 		}
 		
-		Meep lastMeep = null;
+		ProtonetMeep lastMeep = null;
 		if(!json.isNull("last_meep")) {
-			lastMeep = Meep.createMeep(json.getJSONObject("last_meep"));
+			lastMeep = ProtonetMeep.createMeep(json.getJSONObject("last_meep"));
 		}
 		
-		Project project = new Project(
+		ProtonetProject project = new ProtonetProject(
 				json.getInt("id"), 
 				json.getString("name"),
 				lastMeepDate,
 				json.getInt("current_meep_no"),
 				lastMeepUser,
 				lastMeep,
-				Subscription.createSubscription(json.getJSONObject("subscription")));
+				ProtonetSubscription.createSubscription(json.getJSONObject("subscription")));
 		return project;
 	}
 
@@ -75,15 +75,15 @@ public class Project {
 		return currentMeepNo;
 	}
 
-	public User getLastMeepUser() {
+	public ProtonetUser getLastMeepUser() {
 		return lastMeepUser;
 	}
 
-	public Meep getLastMeep() {
+	public ProtonetMeep getLastMeep() {
 		return lastMeep;
 	}
 
-	public Subscription getSubscription() {
+	public ProtonetSubscription getSubscription() {
 		return subscription;
 	}
 
@@ -103,7 +103,7 @@ public class Project {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Project other = (Project) obj;
+		ProtonetProject other = (ProtonetProject) obj;
 		if (id != other.id)
 			return false;
 		return true;

@@ -2,18 +2,18 @@ package de.thathalas.protonet.objects;
 
 import org.json.JSONObject;
 
-public class UserDevice {
+public class ProtonetUserDevice {
 	private int id;
 	private String token;
 	private String platform;
 	
-	private UserDevice(int id, String token, String platform) {
+	private ProtonetUserDevice(int id, String token, String platform) {
 		this.id = id;
 		this.token = token;
 		this.platform = platform;
 	}
 	
-	public static UserDevice createUserDevice(String jsonObject) {
+	public static ProtonetUserDevice createUserDevice(String jsonObject) {
 		JSONObject json = new JSONObject(jsonObject);
 		if (json.has("user_device")) {
 			json = json.getJSONObject("user_device");
@@ -21,8 +21,8 @@ public class UserDevice {
 		return createUserDevice(json);
 	}
 	
-	public static UserDevice createUserDevice(JSONObject json) {
-		return new UserDevice(
+	public static ProtonetUserDevice createUserDevice(JSONObject json) {
+		return new ProtonetUserDevice(
 				json.getInt("id"), 
 				json.getString("token"), 
 				json.getString("platform"));
@@ -57,7 +57,7 @@ public class UserDevice {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserDevice other = (UserDevice) obj;
+		ProtonetUserDevice other = (ProtonetUserDevice) obj;
 		if (id != other.id)
 			return false;
 		if (token == null) {

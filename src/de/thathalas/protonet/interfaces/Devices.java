@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.http.message.BasicNameValuePair;
 
 import de.thathalas.protonet.ProtonetWrapper;
-import de.thathalas.protonet.objects.UserDevice;
+import de.thathalas.protonet.objects.ProtonetUserDevice;
 
 public class Devices {
 
@@ -16,11 +16,11 @@ public class Devices {
 		this.protonet = protonet;
 	}
 	
-	public UserDevice create(String deviceId, String platform) {
+	public ProtonetUserDevice create(String deviceId, String platform) {
 		List<BasicNameValuePair> data = new ArrayList<BasicNameValuePair>();
 		data.add(new BasicNameValuePair("device_id", deviceId));
 		data.add(new BasicNameValuePair("platform", platform));
-		return UserDevice.createUserDevice(protonet.post("/api/v1/users/"+ protonet.getUserId() +"/devices", data));
+		return ProtonetUserDevice.createUserDevice(protonet.post("/api/v1/users/"+ protonet.getUserId() +"/devices", data));
 	}
 	
 	public boolean destroy(int userId, int deviceId) {
