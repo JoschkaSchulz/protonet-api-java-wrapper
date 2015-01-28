@@ -5,11 +5,11 @@ import org.json.JSONObject;
 public class ProtonetMeep {
 	private int id;
 	private String message;
-    private int no;
-    private String type;
-    private ProtonetUser user;
-    private String files; //TODO: Has to be implemented next!
-	
+  private int no;
+  private String type;
+  private ProtonetUser user;
+  private String files; //TODO: Has to be implemented next!
+
 	private ProtonetMeep(int id, String message, int no, String type, ProtonetUser user,
 			String files) {
 		super();
@@ -29,7 +29,7 @@ public class ProtonetMeep {
 		this.type = type;
 		this.user = user;
 	}
-	
+
 	public static ProtonetMeep createMeep(String jsonObject) {
 		JSONObject json = new JSONObject(jsonObject);
 		if (json.has("meep")) {
@@ -37,13 +37,13 @@ public class ProtonetMeep {
 		}
 		return createMeep(json);
 	}
-	
+
 	public static ProtonetMeep createMeep(JSONObject json) {
 		ProtonetMeep meep = new ProtonetMeep(
-				json.getInt("id"), 
-				json.getString("message"), 
-				json.getInt("no"), 
-				json.getString("type"), 
+				json.getInt("id"),
+				json.getString("message"),
+				json.getInt("no"),
+				json.getString("type"),
 				ProtonetUser.createUser(json.getJSONObject("user")));
 		return meep;
 	}
@@ -98,5 +98,5 @@ public class ProtonetMeep {
 	public String toString() {
 		return "Meep [id=" + id + ", message=" + message + "]";
 	}
-	
+
 }
