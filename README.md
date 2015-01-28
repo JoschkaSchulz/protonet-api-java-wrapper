@@ -11,6 +11,7 @@ My goal is to get a 100% functionallity of the Protonet REST API but I can't pro
 :negative_squared_cross_mark: javadoc/comments to the methods  
 :negative_squared_cross_mark: Some easier methods to ask which meeps are new  
 :negative_squared_cross_mark: move to Gradle  
+:white_check_mark: add POJO Objects, remove json  
 :white_check_mark: private Chat to Many Wrapper
 
 :white_check_mark: done / :negative_squared_cross_mark: in work
