@@ -29,8 +29,8 @@ public class ProtonetSystem {
 		}
 		return new ProtonetSystem(
 				json.getString("name"), 
-				json.getString("publicHost"), 
-				json.getString("productType"), 
+				json.getString("public_host"), 
+				json.getString("product_type"), 
 				internalAdress);
 	}
 	
