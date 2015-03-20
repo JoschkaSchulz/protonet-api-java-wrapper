@@ -21,6 +21,15 @@ public class Meeps {
 		this.protonet = protonet;
 	}
 	
+	public List<ProtonetMeep> indexTopics(int topicId, int limit) {
+		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
+		JSONArray array = new JSONObject(protonet.get("/api/v1/topics/" + topicId + "/meeps?limit="+limit)).getJSONArray("meeps");
+		for(int i = 0; i < array.length(); i++) {
+			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
+		}
+		return list;
+	}
+	
 	public List<ProtonetMeep> indexTopics(int topicId) {
 		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/topics/" + topicId + "/meeps")).getJSONArray("meeps");
@@ -30,9 +39,27 @@ public class Meeps {
 		return list;
 	}
 	
+	public List<ProtonetMeep> indexProjects(int projectId, int limit) {
+		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
+		JSONArray array = new JSONObject(protonet.get("/api/v1/projects/" + projectId + "/meeps?limit="+limit)).getJSONArray("meeps");
+		for(int i = 0; i < array.length(); i++) {
+			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
+		}
+		return list;
+	}
+	
 	public List<ProtonetMeep> indexProjects(int projectId) {
 		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
 		JSONArray array = new JSONObject(protonet.get("/api/v1/projects/" + projectId + "/meeps")).getJSONArray("meeps");
+		for(int i = 0; i < array.length(); i++) {
+			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
+		}
+		return list;
+	}
+	
+	public List<ProtonetMeep> indexPrivateChats(int privateChatsId, int limit) {
+		List<ProtonetMeep> list = new ArrayList<ProtonetMeep>();
+		JSONArray array = new JSONObject(protonet.get("/api/v1/private_chats/" + privateChatsId + "/meeps?limit="+limit)).getJSONArray("meeps");
 		for(int i = 0; i < array.length(); i++) {
 			list.add(ProtonetMeep.createMeep(array.getJSONObject(i)));
 		}

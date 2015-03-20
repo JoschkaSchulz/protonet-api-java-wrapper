@@ -132,6 +132,10 @@ public class ProtonetWrapper {
 		return token;
 	}
 	
+	public void setToken(String token) {
+		this.token = token;
+	}
+	
 	public void getToken(String email, String password, String comment) {
 		String result = "";
 		try {

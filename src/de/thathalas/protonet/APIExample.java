@@ -9,7 +9,7 @@ public class APIExample {
 	 */
 	public static void main(String[] args) {
 		ProtonetWrapper protonet = new ProtonetWrapper("http://127.0.0.1:3001");
-		protonet.getToken("joschka@protonet.info", "123456789", "ProtonetJava Wrapper Test");
+		protonet.getToken("joschka@protonet.info", "12345678", "ProtonetJava Wrapper Test");
 		
 		/***************************
 		 * ME

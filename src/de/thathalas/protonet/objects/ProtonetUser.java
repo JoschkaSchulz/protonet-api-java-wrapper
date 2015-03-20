@@ -45,6 +45,13 @@ public class ProtonetUser {
 			username = json.getString("first_name").toLowerCase() + "." + json.getString("last_name").toLowerCase();
 		}
 		
+		String lastActiveAt;
+		if (json.isNull("last_active_at")) {
+			lastActiveAt = "";
+		} else {
+			lastActiveAt = json.getString("last_active_at");
+		}
+		
 		ProtonetUser user = new ProtonetUser(
 				json.getInt("id"), 
 				json.getString("first_name"), 
@@ -55,7 +62,7 @@ public class ProtonetUser {
 				username, 
 				json.getBoolean("deactivated"), 
 				json.getBoolean("online"), 
-				json.getString("last_active_at"));
+				lastActiveAt);
 		return user;
 	}
 	
